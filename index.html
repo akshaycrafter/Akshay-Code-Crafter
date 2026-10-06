@@ -998,6 +998,34 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .quote, .book { t
             </div>
             <div class="game-card__meta"><h3>FRAGG</h3><span>Gaming Cafe - Re-live the golden era</span></div>
           </a>
+          <a href="YOUR_SITE_LINK_9" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="480" style="--i:8">
+            <div class="game-card__art">
+              <img loading="lazy" alt="PROJECT 9 NAME" width="1200" height="675" src="YOUR_IMAGE_URL_9" />
+              <span class="game-card__tag">YOUR_TAG_9</span>
+            </div>
+            <div class="game-card__meta"><h3>YOUR_TITLE_9</h3><span>YOUR_SUBTITLE_9</span></div>
+          </a>
+          <a href="YOUR_SITE_LINK_10" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="540" style="--i:9">
+            <div class="game-card__art">
+              <img loading="lazy" alt="PROJECT 10 NAME" width="1200" height="675" src="YOUR_IMAGE_URL_10" />
+              <span class="game-card__tag">YOUR_TAG_10</span>
+            </div>
+            <div class="game-card__meta"><h3>YOUR_TITLE_10</h3><span>YOUR_SUBTITLE_10</span></div>
+          </a>
+          <a href="YOUR_SITE_LINK_11" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="600" style="--i:10">
+            <div class="game-card__art">
+              <img loading="lazy" alt="PROJECT 11 NAME" width="1200" height="675" src="YOUR_IMAGE_URL_11" />
+              <span class="game-card__tag">YOUR_TAG_11</span>
+            </div>
+            <div class="game-card__meta"><h3>YOUR_TITLE_11</h3><span>YOUR_SUBTITLE_11</span></div>
+          </a>
+          <a href="YOUR_SITE_LINK_12" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="660" style="--i:11">
+            <div class="game-card__art">
+              <img loading="lazy" alt="PROJECT 12 NAME" width="1200" height="675" src="YOUR_IMAGE_URL_12" />
+              <span class="game-card__tag">YOUR_TAG_12</span>
+            </div>
+            <div class="game-card__meta"><h3>YOUR_TITLE_12</h3><span>YOUR_SUBTITLE_12</span></div>
+          </a>
         </div>
       </div>
     </section>
@@ -1207,43 +1235,654 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .quote, .book { t
       </div>
     </section>
 
-    <!-- ===== BEHIND THE DARK SCREENS: NEW HACKER/AUTOMATION IMAGES ===== -->
-    <section class="section section--gallery" id="tech">
+    <!-- ===== INTERACTIVE PRICING CONFIGURATOR ===== -->
+    <style>
+      /* Interactive Pricing Configurator — scoped to #plans. Defines only vars
+         missing from the host site so nothing outside this section changes. */
+      #plans {
+        --ink:     var(--text);
+        --muted:   var(--text-muted);
+        --faint:   var(--text-dim);
+        --success: #22c55e;
+        --surface-2: rgba(255,255,255,0.03);
+        --violet:  #8e8e93;
+        --text-sm: 0.875rem;
+        --text-xs: 0.72rem;
+        --font-display: var(--font-sans);
+      }
+      .label { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+      .label--accent { color: var(--accent); }
+      .chip { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0.28rem 0.65rem; background: rgba(255,255,255,0.03); white-space: nowrap; }
+      .chip--live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--success); box-shadow: 0 0 8px var(--success); }
+      .chip--up { color: var(--accent); border-color: var(--accent-dim); background: var(--accent-dim); }
+      .demo-note { display: block; margin-top: 1.4rem; text-align: center; color: var(--faint); }
+      .glass { background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015)); border: 1px solid var(--line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: var(--radius); }
+
+      .plans__panel { display: grid; grid-template-columns: 1fr; gap: 3.5rem; padding: clamp(1.6rem, 3.5vw, 3rem); position: relative; overflow: hidden; }
+      @media (min-width: 880px) { .plans__panel { grid-template-columns: 0.95fr 1.05fr; } }
+      .plans__panel::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(80% 60% at 0% 0%, var(--accent-dim), transparent 55%); opacity: 0.35; }
+      .plans__controls { position: relative; z-index: 2; align-self: start; }
+      .plans__microcopy { margin-bottom: 1.6rem; }
+      .plans__hint { color: var(--muted); font-size: var(--text-sm); }
+
+      /* Slider */
+      .plans__slider-wrap { margin-top: 2rem; }
+      .plans__range { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 6px; outline: none; background: linear-gradient(90deg, var(--accent) var(--fill, 0%), var(--line) var(--fill, 0%)); cursor: pointer; }
+      .plans__range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); border: 7px solid var(--bg); box-shadow: 0 0 0 1px var(--accent), 0 6px 24px -4px var(--accent-glow); cursor: grab; transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out); }
+      .plans__range::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.15); }
+      .plans__range::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--accent); border: 7px solid var(--bg); box-shadow: 0 0 0 1px var(--accent), 0 6px 24px -4px var(--accent-glow); cursor: grab; }
+      .plans__range:focus-visible { box-shadow: 0 0 0 3px var(--accent-dim); }
+      .plans__markers { position: relative; height: 3.2rem; margin-top: 0.6rem; }
+      .plans__marker { position: absolute; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.35rem; top: 0; }
+      .plans__marker i { width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 1.5px solid var(--faint); transition: background 0.3s, border-color 0.3s, box-shadow 0.3s; }
+      .plans__marker b { font-family: var(--font-mono); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.06em; color: var(--faint); white-space: nowrap; transition: color 0.3s; }
+      .plans__marker.is-active i { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
+      .plans__marker.is-active b { color: var(--accent); }
+
+      /* Preset chips */
+      .plans__presets { display: flex; gap: 0.6rem; margin-top: 1.4rem; flex-wrap: wrap; }
+      .preset { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0.55rem 1.1rem; transition: all 0.3s var(--ease-out); }
+      .preset:hover { border-color: var(--accent); color: var(--accent); }
+      .preset.is-active { background: var(--accent); color: var(--bg); border-color: var(--accent); box-shadow: 0 8px 24px -8px var(--accent-glow); }
+
+      /* Price */
+      .plans__price { margin-top: 2rem; }
+      .plans__price-value { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.6rem, 5vw, 4rem); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; margin-top: 0.4rem; }
+      .plans__tier-tag { display: inline-block; margin-top: 0.8rem; font-family: var(--font-mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-dim); background: var(--accent-dim); border-radius: 999px; padding: 0.35rem 0.8rem; }
+      .plans__tagline { color: var(--muted); font-size: var(--text-sm); margin-top: 0.7rem; max-width: 38ch; }
+
+      /* Features */
+      .plans__features { margin-top: 2rem; }
+      .features { margin-top: 0.9rem; display: flex; flex-direction: column; gap: 0.55rem; }
+      .feature { display: flex; align-items: flex-start; gap: 0.7rem; font-size: var(--text-sm); color: var(--ink); line-height: 1.45; opacity: 0; transform: translateY(14px); transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out); }
+      .feature.is-in { opacity: 1; transform: none; }
+      .feature i { flex: none; width: 17px; height: 17px; margin-top: 0.1rem; border-radius: 50%; background: var(--accent-dim); display: grid; place-items: center; color: var(--accent); font-style: normal; font-family: var(--font-mono); font-size: 0.6rem; font-weight: 600; }
+      .plans__cta { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; }
+
+      /* Dashboard column */
+      .plans__dash { position: relative; z-index: 2; }
+      .plans__dash-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+
+      /* Dashboard widgets */
+      .dashboard { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; }
+      @media (max-width: 720px) { .dashboard { grid-template-columns: 1fr; } }
+      .widget { position: relative; border: 1px solid var(--line); border-radius: var(--radius-sm); background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)); padding: 1.1rem 1.2rem; overflow: hidden; opacity: 0; transform: translateY(34px) scale(0.94); transition: opacity 850ms var(--ease-out), transform 850ms var(--ease-out); }
+      .widget.is-in { opacity: 1; transform: none; }
+      .widget:hover { border-color: rgba(255,255,255,0.16); }
+      .widget__head { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; margin-bottom: 0.9rem; }
+      .widget__head h3 { font-family: var(--font-mono); font-weight: 600; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+      .widget__body { position: relative; z-index: 1; }
+      .widget__body--center { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+      .widget__meta { font-size: 0.72rem; color: var(--faint); margin-top: 0.7rem; }
+      .widget__meta b { color: var(--ink); font-weight: 600; }
+      .widget__score { font-family: var(--font-display); font-weight: 700; font-size: 2.2rem; line-height: 1; letter-spacing: -0.02em; }
+
+      /* meter bars */
+      .meter { height: 5px; border-radius: 5px; background: var(--line); overflow: hidden; margin-top: 0.8rem; }
+      .meter span { display: block; height: 100%; width: var(--w, 0%); border-radius: 5px; background: linear-gradient(90deg, var(--accent-dim), var(--accent)); }
+      .meter--accent span { background: linear-gradient(90deg, var(--violet), var(--accent)); }
+
+      /* site list */
+      .site-list { display: flex; flex-direction: column; gap: 0.45rem; }
+      .site-list li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.76rem; color: var(--muted); }
+      .site-list li i { width: 5px; height: 5px; border-radius: 50%; background: var(--success); box-shadow: 0 0 6px var(--success); }
+      .site-list li em { margin-left: auto; font-style: normal; font-size: 0.62rem; font-family: var(--font-mono); color: var(--success); text-transform: uppercase; letter-spacing: 0.08em; }
+
+      /* chart */
+      .chart { width: 100%; height: 44px; margin-top: 0.4rem; }
+      .chart rect { fill: var(--line); transition: fill 0.4s; }
+      .chart .chart--hot { fill: var(--accent); }
+      .widget:hover .chart rect:not(.chart--hot) { fill: var(--faint); }
+      .chart--line { height: 30px; }
+      .chart--line polyline { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; }
+
+      /* toggle (scoped to .widget so it never clashes with the nav currency toggle) */
+      .widget .toggle-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
+      .widget .toggle { position: relative; display: inline-block; width: 40px; height: 22px; cursor: pointer; }
+      .widget .toggle input { position: absolute; opacity: 0; }
+      .widget .toggle i { position: absolute; inset: 0; border-radius: 999px; background: var(--line); transition: background 0.3s; }
+      .widget .toggle i::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--ink); transition: transform 0.3s var(--ease-out), background 0.3s; }
+      .widget .toggle input:checked + i { background: var(--accent); }
+      .widget .toggle input:checked + i::after { transform: translateX(18px); background: var(--bg); }
+
+      /* chat bubble */
+      .bubble { background: var(--surface-2); border: 1px solid var(--line-soft); border-radius: 0.9rem 0.9rem 0.9rem 0.2rem; padding: 0.7rem 0.85rem; font-size: 0.74rem; color: var(--muted); margin-top: 0.4rem; }
+
+      /* logs */
+      .log-list { display: flex; flex-direction: column; gap: 0.5rem; }
+      .log-list li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.74rem; color: var(--muted); font-family: var(--font-mono); }
+      .log-list time { color: var(--faint); font-size: 0.64rem; }
+      .log-list .ok { color: var(--success); font-style: normal; margin-left: auto; }
+      .log-list .run { color: var(--accent); font-style: normal; margin-left: auto; animation: blink 1s steps(1) infinite; }
+
+      /* funnel */
+      .funnel { display: flex; flex-direction: column; gap: 0.4rem; }
+      .funnel span { position: relative; display: flex; align-items: center; justify-content: space-between; height: 20px; width: var(--w, 100%); background: var(--accent-dim); border-radius: 4px; font-family: var(--font-mono); font-size: 0.62rem; color: var(--accent); padding: 0 0.5rem; }
+      .funnel span b { font-weight: 500; color: var(--muted); }
+
+      /* flow (AI Workflows widget) */
+      .flow { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; justify-content: center; }
+      .flow-node { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0.45rem 0.8rem; background: var(--bg); white-space: nowrap; }
+      .flow-node--accent { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+      .flow i { width: 18px; height: 1px; background: var(--line); position: relative; flex: none; }
+      .flow i::after { content: ""; position: absolute; right: 0; top: -2.5px; border: 3px solid transparent; border-left-color: var(--faint); }
+
+      /* Locked state — dimmed + blurred, with lock chip */
+      .widget.is-locked { opacity: 0.55; filter: blur(2.5px) saturate(0.55); }
+      .widget.is-locked::after { content: ""; position: absolute; inset: 0; z-index: 2; background: radial-gradient(120% 120% at 50% 0%, rgba(23,23,25,0.25), rgba(23,23,25,0.55)); }
+      .widget__lock { position: absolute; inset: 0; z-index: 3; display: none; align-items: center; justify-content: center; }
+      .widget.is-locked .widget__lock { display: flex; }
+      .widget__lock span { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); background: rgba(23,23,25,0.7); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 999px; padding: 0.5rem 0.9rem; }
+      .widget__lock svg { width: 13px; height: 13px; stroke: var(--faint); }
+
+      /* unlock reward pulse */
+      .widget.is-unlocking { animation: unlockPop 0.55s cubic-bezier(0.34,1.56,0.68,1) forwards; }
+      @keyframes unlockPop { 0% { box-shadow: 0 0 0 0 var(--accent-glow); filter: saturate(1.5); } 60% { box-shadow: 0 0 0 22px transparent; filter: saturate(1); } 100% { box-shadow: 0 0 0 0 transparent; filter: saturate(1); } }
+      @keyframes blink { 50% { opacity: 0; } }
+
+      /* Checkout summary */
+      .plans__summary { margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 0.6rem; flex-wrap: wrap; }
+      .plans__summary-label { font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+      .plans__summary-row { display: flex; align-items: baseline; gap: 0.5rem; }
+      .plans__summary-tier { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); }
+      .plans__summary-price { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--ink); }
+      .plans__summary-tagline { font-size: 0.8rem; color: var(--muted); max-width: 28ch; }
+    </style>
+
+    <section class="section section--plans" id="plans">
       <div class="container">
-        <header class="section__head">
+        <header class="section__head" data-reveal>
           <div class="section__kicker reveal" data-reveal>
             <span class="kicker-num">05</span>
             <span class="kicker-line"></span>
-            <span class="kicker-text">Tech & Vibe</span>
+            <span class="kicker-text">Interactive Pricing</span>
           </div>
           <div class="section__row">
             <h2 class="section__title reveal" data-reveal>
-              <span>Behind the</span> <span class="accent">dark screens.</span>
+              <span>What fits your</span> <span class="accent">budget?</span>
             </h2>
+            <p class="section__lede reveal" data-reveal data-reveal-delay="100">
+              Drag the slider to see how each plan unlocks more of your dashboard.<br>The site, features, and automation layer update live.
+            </p>
           </div>
         </header>
 
-        <div class="gallery">
-          <!-- Image 1: Dark code editor (Tall) -->
-          <figure class="gallery__item gallery__item--tall reveal" data-reveal style="--i:0"><img loading="lazy" alt="Dark code editor" width="1200" height="800" src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=1200&q=80&auto=format&fit=crop" /></figure>
-          
-          <!-- Image 2: n8n / Workflow Automation -->
-          <figure class="gallery__item reveal" data-reveal data-reveal-delay="80" style="--i:1"><img loading="lazy" alt="n8n workflow automation" width="1200" height="800" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80&auto=format&fit=crop" /></figure>
-          
-          <!-- Image 3: Coding terminal dark -->
-          <figure class="gallery__item reveal" data-reveal data-reveal-delay="160" style="--i:2"><img loading="lazy" alt="Terminal coding" width="1200" height="800" src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=900&q=80&auto=format&fit=crop" /></figure>
-          
-          <!-- Image 4: Automation / Data flow (Wide) -->
-          <figure class="gallery__item gallery__item--wide reveal" data-reveal data-reveal-delay="240" style="--i:3"><img loading="lazy" alt="Data flow automation" width="1200" height="800" src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=1400&q=80&auto=format&fit=crop" /></figure>
-          
-          <!-- Image 5: Code syntax dark -->
-          <figure class="gallery__item reveal" data-reveal data-reveal-delay="320" style="--i:4"><img loading="lazy" alt="Code syntax" width="1200" height="800" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&q=80&auto=format&fit=crop" /></figure>
-          
-          <!-- Image 6: Server / AI Backend -->
-          <figure class="gallery__item reveal" data-reveal data-reveal-delay="400" style="--i:5"><img loading="lazy" alt="AI server backend" width="1200" height="800" src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=900&q=80&auto=format&fit=crop" /></figure>
+        <div class="plans__panel glass reveal" data-reveal data-reveal-delay="100">
+          <div class="plans__controls">
+            <p class="plans__microcopy">
+              <span class="label label--accent">Drag the slider</span>
+              <span class="plans__hint">— the plan, features and dashboard update live.</span>
+            </p>
+
+            <div class="plans__slider-wrap">
+              <input type="range" class="plans__range" id="budget-range" min="15000" max="150000" step="1000" value="15000" aria-label="Your budget" aria-describedby="price-value" />
+              <div class="plans__markers" id="plans-markers" aria-hidden="true">
+                <span class="plans__marker" data-marker="15000"><i></i><b>₹15k</b></span>
+                <span class="plans__marker" data-marker="30000"><i></i><b>₹30k</b></span>
+                <span class="plans__marker" data-marker="60000"><i></i><b>₹60k</b></span>
+                <span class="plans__marker" data-marker="150000"><i></i><b>₹1.5L+</b></span>
+              </div>
+            </div>
+
+            <div class="plans__presets" role="group" aria-label="Quick tier selection">
+              <button class="preset is-active" data-tier="0">Starter</button>
+              <button class="preset" data-tier="1">Growth</button>
+              <button class="preset" data-tier="2">Premium</button>
+            </div>
+
+            <div class="plans__price" aria-live="polite">
+              <span class="label">Estimated investment</span>
+              <div class="plans__price-value" id="price-value">₹15,000</div>
+              <span class="plans__tier-tag" id="plans-tier-tag">Starter</span>
+              <p class="plans__tagline" id="plans-tagline">Launch-ready single-page site with premium motion.</p>
+            </div>
+
+            <div class="plans__features">
+              <span class="label">What's included</span>
+              <ul class="features" id="features-list" aria-live="polite"></ul>
+            </div>
+
+            <div class="plans__cta">
+              <button class="btn btn--primary btn--lg" id="get-plan">Get the <span id="cta-tier">Starter</span> plan <span aria-hidden="true">→</span></button>
+              <a class="btn btn--ghost" id="wa-cta" href="https://wa.me/916393588686" target="_blank" rel="noopener">Talk on WhatsApp</a>
+              <div class="plans__summary">
+                <span class="label plans__summary-label">You selected</span>
+                <div class="plans__summary-row">
+                  <span class="plans__summary-tier" id="sel-tier">Starter</span>
+                  <span class="plans__summary-price" id="sel-price">₹15,000</span>
+                </div>
+                <span class="plans__summary-tagline" id="sel-tagline">Launch-ready single-page site with premium motion.</span>
+                <button class="btn btn--ghost btn--sm" id="adjust-budget">Adjust budget</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="plans__dash" id="dashboard-grid">
+            <div class="plans__dash-head">
+              <span class="label">Your dashboard preview</span>
+              <span class="chip chip--live" id="dash-widget-count">3 / 8 widgets unlocked</span>
+              <a class="btn btn--ghost btn--sm" id="wa-cta-2" href="https://wa.me/916393588686" target="_blank" rel="noopener">Discuss on WhatsApp</a>
+            </div>
+            <p class="demo-note label">Demo dashboard — all figures shown are sample data</p>
+
+            <div class="dashboard" id="dashboard">
+              <article class="widget" data-tier="0">
+                <header class="widget__head">
+                  <h3>Site Overview</h3><span class="chip chip--live">Live</span>
+                </header>
+                <div class="widget__body">
+                  <ul class="site-list">
+                    <li><i></i>Hero<em>Live</em></li>
+                    <li><i></i>Services<em>Live</em></li>
+                    <li><i></i>Pricing<em>Live</em></li>
+                    <li><i></i>Contact<em>Live</em></li>
+                  </ul>
+                  <div class="meter"><span style="--w:100%"></span></div>
+                  <p class="widget__meta">4 / 4 sections shipped</p>
+                </div>
+              </article>
+
+              <article class="widget" data-tier="0">
+                <header class="widget__head">
+                  <h3>Page Speed</h3><span class="chip">Lighthouse</span>
+                </header>
+                <div class="widget__body widget__body--center">
+                  <b class="widget__score">97</b>
+                  <div class="meter meter--accent"><span style="--w:97%"></span></div>
+                  <p class="widget__meta">LCP 0.9s · CLS 0.02 · CWV green</p>
+                </div>
+              </article>
+
+              <article class="widget" data-tier="0">
+                <header class="widget__head">
+                  <h3>Analytics</h3><span class="chip chip--up">+18%</span>
+                </header>
+                <div class="widget__body">
+                  <svg class="chart" viewBox="0 0 120 44" preserveAspectRatio="none" aria-hidden="true">
+                    <rect x="2"  y="26" width="10" height="18" rx="2"/>
+                    <rect x="16" y="22" width="10" height="22" rx="2"/>
+                    <rect x="30" y="28" width="10" height="16" rx="2"/>
+                    <rect x="44" y="16" width="10" height="28" rx="2"/>
+                    <rect x="58" y="20" width="10" height="24" rx="2"/>
+                    <rect x="72" y="10" width="10" height="34" rx="2"/>
+                    <rect x="86" y="14" width="10" height="30" rx="2"/>
+                    <rect x="100" y="4" width="10" height="40" rx="2" class="chart--hot"/>
+                  </svg>
+                  <p class="widget__meta"><b>1,240</b> visitors this week</p>
+                </div>
+              </article>
+
+              <article class="widget" data-tier="1">
+                <div class="widget__lock" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                  <span>Growth</span>
+                </div>
+                <header class="widget__head">
+                  <h3>WhatsApp Bot</h3><span class="chip chip--live">Online</span>
+                </header>
+                <div class="widget__body">
+                  <div class="toggle-row">
+                    <span class="label">Auto-replies</span>
+                    <label class="toggle"><input type="checkbox" checked /><i></i></label>
+                  </div>
+                  <div class="bubble">Hi! I'm AUTOMATA's bot — want a quote for your project?</div>
+                  <p class="widget__meta">342 conversations handled this week</p>
+                </div>
+              </article>
+
+              <article class="widget" data-tier="1">
+                <div class="widget__lock" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                  <span>Growth</span>
+                </div>
+                <header class="widget__head">
+                  <h3>Automation Logs</h3><span class="chip chip--live">Running</span>
+                </header>
+                <div class="widget__body">
+                  <ul class="log-list">
+                    <li><time>09:41</time>Lead captured → CRM<i class="ok">✓</i></li>
+                    <li><time>09:41</time>WhatsApp intro sent<i class="ok">✓</i></li>
+                    <li><time>09:40</time>Quote generated (AI)<i class="run">…</i></li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="widget" data-tier="2">
+                <div class="widget__lock" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                  <span>Premium</span>
+                </div>
+                <header class="widget__head">
+                  <h3>AI Workflows</h3><span class="chip chip--live">Active</span>
+                </header>
+                <div class="widget__body">
+                  <div class="flow">
+                    <span class="flow-node">Lead</span><i></i><span class="flow-node">Enrich</span><i></i><span class="flow-node flow-node--accent">AI reply</span><i></i><span class="flow-node">CRM</span>
+                  </div>
+                  <p class="widget__meta">4 workflows · 0 failures · 0.4s avg</p>
+                </div>
+              </article>
+
+              <article class="widget" data-tier="2">
+                <div class="widget__lock" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                  <span>Premium</span>
+                </div>
+                <header class="widget__head">
+                  <h3>Lead Pipeline</h3><span class="chip chip--up">+12%</span>
+                </header>
+                <div class="widget__body">
+                  <div class="funnel">
+                    <span style="--w:100%"><b>Visitors</b>1,240</span>
+                    <span style="--w:72%"><b>Leads</b>86</span>
+                    <span style="--w:46%"><b>Quotes</b>12</span>
+                    <span style="--w:30%"><b>Deals</b>4</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="widget" data-tier="2">
+                <div class="widget__lock" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                  <span>Premium</span>
+                </div>
+                <header class="widget__head">
+                  <h3>Monitoring</h3><span class="chip chip--live">Healthy</span>
+                </header>
+                <div class="widget__body">
+                  <b class="widget__score">99.98%</b>
+                  <svg class="chart chart--line" viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true">
+                    <polyline points="0,26 14,22 28,24 42,14 56,18 70,10 84,13 98,6 120,3" />
+                  </svg>
+                  <p class="widget__meta">Last incident 212 days ago</p>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <script>
+      (function () {
+        'use strict';
+
+        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        var TIERS = [
+          {
+            id: "starter",
+            name: "Starter",
+            range: [15000, 30000],
+            tagline: "Launch-ready single-page site with premium motion.",
+            features: [
+              "Single-page website (up to 5 sections)",
+              "Premium typography & brand styling",
+              "Scroll animations — GSAP + Lenis",
+              "Mobile-first responsive build",
+              "Basic SEO & meta setup",
+              "1 revision round · 7-day delivery",
+            ],
+            widgets: 3,
+          },
+          {
+            id: "growth",
+            name: "Growth",
+            range: [30000, 60000],
+            tagline: "Multi-page site, CMS and your first automations.",
+            features: [
+              "Everything in Starter",
+              "Up to 5 pages with shared design system",
+              "Custom GSAP choreography (scroll-scrubbed)",
+              "CMS / blog so you self-edit",
+              "Analytics dashboard setup",
+              "WhatsApp chatbot (rule-based)",
+              "2 revision rounds · 14-day delivery",
+            ],
+            widgets: 5,
+          },
+          {
+            id: "premium",
+            name: "Premium",
+            range: [60000, 150000],
+            tagline: "The full machine — AI automations, CRM, live dashboard.",
+            features: [
+              "Everything in Growth",
+              "AI automation workflows (GPT-powered)",
+              "CRM integration & automated lead scoring",
+              "Full client dashboard — live analytics",
+              "WhatsApp bot + auto follow-up flows",
+              "30-day post-launch support",
+              "Priority delivery · dedicated line",
+            ],
+            widgets: 8,
+          },
+        ];
+
+        var WA_NUMBER = "916393588686";
+
+        var slider     = document.getElementById("budget-range");
+        var priceEl    = document.getElementById("price-value");
+        var tierTagEl  = document.getElementById("plans-tier-tag");
+        var taglineEl  = document.getElementById("plans-tagline");
+        var featuresEl = document.getElementById("features-list");
+        var ctaTierEl  = document.getElementById("cta-tier");
+        var markers    = document.querySelectorAll(".plans__marker");
+        var presets    = document.querySelectorAll(".preset");
+        var widgets    = document.querySelectorAll("#dashboard .widget");
+        var dashCount  = document.getElementById("dash-widget-count");
+
+        var MIN = parseFloat(slider.min);
+        var MAX = parseFloat(slider.max);
+        var state = { tierIndex: 0, price: parseFloat(slider.value) };
+        var priceCounter = { v: state.price };
+        var featToken = 0;
+        var priceAnimId = null;
+        var dashboardRevealed = false;
+
+        function formatINR(n) {
+          return "₹" + Math.round(n).toLocaleString("en-IN");
+        }
+
+        function smoothScrollTo(target, opts) {
+          opts = opts || {};
+          var el = typeof target === "string" ? document.querySelector(target) : target;
+          if (!el) return;
+          var y = el.getBoundingClientRect().top + window.scrollY - (opts.offset || 0);
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+
+        function getTierIndex(price) {
+          for (var i = 0; i < TIERS.length; i++) {
+            if (price < TIERS[i].range[1]) return i;
+          }
+          return TIERS.length - 1;
+        }
+
+        function positionMarkers() {
+          var pct = function (v) { return ((v - MIN) / (MAX - MIN)) * 100; };
+          markers.forEach(function (m) {
+            m.style.left = pct(parseFloat(m.dataset.marker)) + "%";
+            m.classList.toggle("is-active", getTierIndex(parseFloat(m.dataset.marker)) === state.tierIndex);
+          });
+        }
+
+        function setSliderFill() {
+          slider.style.setProperty("--fill", ((state.price - MIN) / (MAX - MIN)) * 100 + "%");
+        }
+
+        /* Animated price counter — count up/down, never a hard jump */
+        function updatePrice() {
+          if (priceAnimId) cancelAnimationFrame(priceAnimId);
+          var from = priceCounter.v;
+          var to = state.price;
+          var duration = reduceMotion ? 0 : 600;
+          var start = performance.now();
+          function step(now) {
+            var elapsed = now - start;
+            var p = Math.min(elapsed / duration, 1);
+            var ease = 1 - Math.pow(1 - p, 2); /* power2.out */
+            priceCounter.v = from + (to - from) * ease;
+            priceEl.textContent = formatINR(priceCounter.v);
+            if (p < 1) { priceAnimId = requestAnimationFrame(step); }
+            else { priceAnimId = null; }
+          }
+          requestAnimationFrame(step);
+        }
+
+        /* Rebuild the features list with a crossfade + stagger */
+        function renderFeatures(tierIndex) {
+          var token = ++featToken;
+          var current = featuresEl.querySelectorAll(".feature");
+          current.forEach(function (item) { item.classList.remove("is-in"); });
+          setTimeout(function () {
+            if (token !== featToken) return;
+            featuresEl.innerHTML = TIERS[tierIndex].features
+              .map(function (f) { return '<li class="feature"><i>\u2713</i><span>' + f + "</span></li>"; })
+              .join("");
+            if (reduceMotion) {
+              featuresEl.querySelectorAll(".feature").forEach(function (f) { f.classList.add("is-in"); });
+              return;
+            }
+            featuresEl.querySelectorAll(".feature").forEach(function (f, i) {
+              setTimeout(function () { f.classList.add("is-in"); }, i * 50);
+            });
+          }, 220);
+        }
+
+        function renderTierMeta() {
+          var tier = TIERS[state.tierIndex];
+          presets.forEach(function (p, i) { p.classList.toggle("is-active", i === state.tierIndex); });
+          tierTagEl.textContent = tier.name;
+          taglineEl.textContent = tier.tagline;
+          ctaTierEl.textContent = tier.name;
+          positionMarkers();
+        }
+
+        function revealDashboard() {
+          if (dashboardRevealed) return;
+          dashboardRevealed = true;
+          if (reduceMotion) {
+            widgets.forEach(function (w) { w.classList.add("is-in"); });
+            return;
+          }
+          if (!window.IntersectionObserver) {
+            widgets.forEach(function (w, i) {
+              setTimeout(function () { w.classList.add("is-in"); }, i * 90);
+            });
+            return;
+          }
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                widgets.forEach(function (w, i) {
+                  setTimeout(function () { w.classList.add("is-in"); }, i * 90);
+                });
+                io.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.1 });
+          io.observe(document.getElementById("dashboard-grid"));
+        }
+
+        function applyLockStates(tierIndex) {
+          widgets.forEach(function (w) {
+            var needs = parseInt(w.dataset.tier, 10);
+            var wasLocked = w.classList.contains("is-locked");
+            var locked = needs > tierIndex;
+            var body = w.querySelector(".widget__body");
+            if (locked) {
+              w.classList.add("is-locked");
+              w.classList.remove("is-unlocking");
+              if (body) body.setAttribute("aria-hidden", "true");
+            } else if (wasLocked) {
+              w.classList.remove("is-locked");
+              if (body) body.removeAttribute("aria-hidden");
+              if (reduceMotion) return;
+              w.classList.add("is-unlocking");
+              w.addEventListener("animationend", function () { w.classList.remove("is-unlocking"); }, { once: true });
+            }
+          });
+          dashCount.textContent = TIERS[tierIndex].widgets + " / " + widgets.length + " widgets unlocked";
+        }
+
+        function buildWhatsAppUrl() {
+          var tier = TIERS[state.tierIndex];
+          var msg =
+            "Hi Akshay! I just used your budget configurator. " +
+            "I'm interested in the *" + tier.name + "* plan at *" + formatINR(state.price) + "* (" + tier.tagline + "). Let's talk!";
+          return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+        }
+
+        function syncContactSelection() {
+          var tier = TIERS[state.tierIndex];
+          var wa = document.getElementById("wa-cta");
+          if (wa) wa.href = buildWhatsAppUrl();
+          var wa2 = document.getElementById("wa-cta-2");
+          if (wa2) wa2.href = buildWhatsAppUrl();
+          var selTier = document.getElementById("sel-tier");
+          if (selTier) selTier.textContent = tier.name;
+          var selPrice = document.getElementById("sel-price");
+          if (selPrice) selPrice.textContent = formatINR(state.price);
+          var selTag = document.getElementById("sel-tagline");
+          if (selTag) selTag.textContent = tier.tagline;
+        }
+
+        /* Slider input — everything updates in one place */
+        if (slider) {
+          slider.addEventListener("input", function () {
+            state.price = parseFloat(slider.value);
+            var nextTier = getTierIndex(state.price);
+            setSliderFill();
+            updatePrice();
+            if (nextTier !== state.tierIndex) {
+              state.tierIndex = nextTier;
+              renderFeatures(nextTier);
+              applyLockStates(nextTier);
+              renderTierMeta();
+              syncContactSelection();
+            }
+          });
+        }
+
+        /* Preset chips — snap the slider to the tier's starting budget */
+        presets.forEach(function (preset) {
+          preset.addEventListener("click", function () {
+            var idx = parseInt(preset.dataset.tier, 10);
+            state.price = TIERS[idx].range[0];
+            slider.value = state.price;
+            slider.dispatchEvent(new Event("input"));
+            smoothScrollTo(slider, { offset: -120 });
+            slider.focus();
+          });
+        });
+
+        /* Get this plan — carries tier + price into the contact step */
+        var getPlanBtn = document.getElementById("get-plan");
+        if (getPlanBtn) {
+          getPlanBtn.addEventListener("click", function () {
+            syncContactSelection();
+            smoothScrollTo("#book", { offset: -40 });
+          });
+        }
+
+        var adjustBtn = document.getElementById("adjust-budget");
+        if (adjustBtn) {
+          adjustBtn.addEventListener("click", function () {
+            smoothScrollTo("#plans", { offset: -40 });
+          });
+        }
+
+        /* Initialise the configurator */
+        setSliderFill();
+        positionMarkers();
+        renderFeatures(0);
+        applyLockStates(0);
+        renderTierMeta();
+        syncContactSelection();
+        revealDashboard();
+      })();
+    </script>
 
 <section class="section section--quotes" id="case-studies">
   <div class="container">
