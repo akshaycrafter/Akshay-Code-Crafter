@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Akshay Verma — Premium UI/UX & AI-Powered Frontend</title>
-  <meta name="description" content="Akshay is an AI-powered frontend engineer crafting cinematic websites and intelligent automation systems." />
+  <title>CodeCrafter — Frontend Developer & Web Automation</title>
+  <meta name="description" content="Freelance frontend developer crafting cinematic websites and automation systems for businesses that want to stand out." />
   <meta name="theme-color" content="#000000" />
-  <meta property="og:title" content="CodeCrafter — Cinematic Websites & AI Automation" />
-  <meta property="og:description" content="Dark, animated, high-converting websites for businesses worldwide. Delivered in 48 hours." />
+  <meta property="og:title" content="CodeCrafter — Frontend Developer" />
+  <meta property="og:description" content="Dark, animated, high-converting websites for businesses worldwide. Website projects delivered in 7 days." />
   <meta property="og:image" content="https://codecrafter.akshaycodecrafter.workers.dev/og-image.jpg" />
   <meta property="og:url" content="https://codecrafter.akshaycodecrafter.workers.dev/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="CodeCrafter — Cinematic Websites & AI Automation" />
+  <meta name="twitter:title" content="CodeCrafter — Frontend Developer" />
   <meta name="twitter:description" content="Dark, animated, high-converting websites for businesses worldwide." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -96,18 +96,11 @@ h1 { font-size: clamp(48px, 8.5vw, 112px); }
 h2 { font-size: clamp(34px, 5.4vw, 72px); }
 h3 { font-size: clamp(20px, 2.2vw, 26px); }
 h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-mute); font-weight: 500; }
-p, .sub-text { margin: 0; color: var(--text-soft); font-weight: 400; letter-spacing: -0.01em; line-height: 1.5; }
+p { margin: 0; color: var(--text-soft); font-weight: 400; letter-spacing: -0.01em; line-height: 1.5; }
 .accent { color: var(--accent); }
-.mono { font-family: var(--font-mono); }
-.eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--font-mono);
-  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--text-mute);
-}
 .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
 .section { padding: clamp(72px, 10vw, 140px) 0; position: relative; scroll-margin-top: 120px; }
-.section--stations, .section--why, .section--quotes, .section--faq { border-top: 1px solid var(--line-soft); }
+.section--stations, .section--why, .section--faq { border-top: 1px solid var(--line-soft); }
 .section__head {
   display: grid; grid-template-columns: 1fr; gap: 28px;
   margin-bottom: clamp(40px, 6vw, 72px);
@@ -175,10 +168,6 @@ p, .sub-text { margin: 0; color: var(--text-soft); font-weight: 400; letter-spac
 .nav__links a:hover { color: var(--text); }
 .nav__links a:hover::after { width: 100%; }
 @media (min-width: 880px) { .nav__links { display: inline-flex; } }
-.nav__cta { display: none; align-items: center; gap: 14px; }
-@media (min-width: 720px) { .nav__cta { display: inline-flex; } }
-.nav__status { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-mute); }
-.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); animation: pulseDot 2.2s var(--ease-out) infinite; }
 .nav__burger { display: inline-flex; flex-direction: column; gap: 5px; padding: 10px; margin-right: -10px; }
 .nav__burger span { width: 22px; height: 1.5px; background: var(--text); transition: transform var(--t-base) var(--ease-out), opacity var(--t-fast); }
 .nav__burger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
@@ -211,7 +200,6 @@ p, .sub-text { margin: 0; color: var(--text-soft); font-weight: 400; letter-spac
 .btn--primary:active { transform: translateY(0); }
 .btn--ghost { background: transparent; color: var(--text); border-color: var(--line); }
 .btn--ghost:hover { border-color: var(--accent); color: var(--accent); background: rgba(255, 255, 255, 0.03); }
-.btn--sm { padding: 9px 16px; font-size: 13px; }
 .btn--lg { padding: 18px 28px; font-size: 15px; }
 .btn--block { width: 100%; }
 
@@ -243,18 +231,6 @@ p, .sub-text { margin: 0; color: var(--text-soft); font-weight: 400; letter-spac
 .hero__col-left { display: flex; flex-direction: column; gap: 32px; padding-top: 32px; }
 .hero__col-right { display: flex; flex-direction: column; gap: 24px; margin-top: 8px; }
 @media (min-width: 1024px) { .hero__col-right { margin-top: 56px; } }
-
-.hero__badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 14px;
-  border: 1px solid rgba(52, 57, 70, 0.5);
-  border-radius: 999px;
-  background: rgba(17, 19, 25, 0.5);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--text-soft); width: max-content;
-}
-.hero__star { width: 14px; height: 14px; color: var(--accent); fill: currentColor; }
 
 .hero__title {
   margin: 0; font-family: var(--font-disp); font-weight: 500;
@@ -367,7 +343,6 @@ p, .sub-text { margin: 0; color: var(--text-soft); font-weight: 400; letter-spac
 .station-card__price .amount { font-size: 36px; font-weight: 600; letter-spacing: -0.03em; color: var(--text); }
 .station-card__price .unit { color: var(--text-mute); font-size: 14px; margin-left: 4px; }
 
-.toggle-wrap { display: flex; justify-content: center; margin-bottom: 40px; }
 .toggle { display: inline-flex; align-items: center; padding: 4px; border: 1px solid rgba(255,255,255,0.06); border-radius: 999px; background: rgba(0,0,0,0.5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: relative; }
 .toggle__btn { position: relative; z-index: 2; padding: 10px 18px; font-size: 13px; color: var(--text-muted); border-radius: 999px; transition: color var(--t-base); display: inline-flex; align-items: center; gap: 8px; font-weight: 500; letter-spacing: -0.01em; }
 .toggle__btn.is-active { color: var(--accent-ink); }
@@ -391,7 +366,6 @@ p, .sub-text { margin: 0; color: var(--text-soft); font-weight: 400; letter-spac
 .plan__list { display: grid; gap: 12px; }
 .plan__list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-soft); padding-left: 0; position: relative; }
 .plan__list li::before { content: "\2014"; position: static; left: auto; top: auto; width: auto; height: auto; background: none; color: var(--accent); font-size: 14px; }
-.pricing-note { text-align: center; margin-top: 32px; color: var(--text-muted); font-size: 13px; font-family: var(--font-sans); letter-spacing: -0.01em; }
 
 .why-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; overflow: hidden; }
 @media (min-width: 720px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -402,27 +376,10 @@ p, .sub-text { margin: 0; color: var(--text-soft); font-weight: 400; letter-spac
 .why-card h3 { font-size: 19px; font-weight: 600; }
 .why-card p { font-size: 14px; color: var(--text-soft); line-height: 1.55; }
 
-.gallery { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; gap: 14px; }
-@media (min-width: 720px) { .gallery { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 18px; } }
-.gallery__item { position: relative; overflow: hidden; border-radius: 12px; background: #0b0b0c; border: 1px solid rgba(255, 255, 255, 0.08); transition: transform var(--t-base) var(--ease-out), border-color var(--t-base); transform-style: preserve-3d; }
-.gallery__item img { 
-  width: 100%; height: 100%; object-fit: cover; 
-  filter: grayscale(80%) brightness(0.6) contrast(1.2); 
-  transition: transform 800ms var(--ease-out), filter var(--t-base); 
-}
-.gallery__item:hover { transform: translateY(-3px); border-color: var(--accent-dim); }
-.gallery__item:hover img { 
-  transform: scale(1.06); 
-  filter: grayscale(20%) brightness(1) contrast(1.1); 
-}
-.gallery__item--tall { grid-row: span 2; }
-.gallery__item--wide { grid-column: span 2; }
-
 /* =========================================================
    CodeCrafter — fallbacks.css (broken image fallback)
    ========================================================= */
-.game-card__art.img-broken::before,
-.gallery__item.img-broken::before {
+.game-card__art.img-broken::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -430,15 +387,6 @@ p, .sub-text { margin: 0; color: var(--text-soft); font-weight: 400; letter-spac
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff4d42' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.35'><path d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'/><path d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'/><line x1='1' y1='1' x2='23' y2='23'/></svg>") center/48px no-repeat;
   pointer-events: none;
 }
-
-.quotes { display: grid; grid-template-columns: 1fr; gap: 20px; }
-@media (min-width: 880px) { .quotes { grid-template-columns: repeat(3, 1fr); } }
-.quote { position: relative; display: grid; gap: 22px; padding: 32px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color var(--t-base); }
-.quote:hover { border-color: var(--accent); animation: cardBounce 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.quote p { font-family: var(--font-disp); font-size: 18px; line-height: 1.4; color: var(--text); letter-spacing: -0.015em; }
-.quote footer { display: grid; gap: 2px; }
-.quote footer b { font-size: 14px; font-weight: 600; }
-.quote footer span { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-mute); }
 
 .book { position: relative; border-radius: 12px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); overflow: hidden; padding: clamp(40px, 6vw, 80px); }
 .book__bg { position: absolute; inset: 0; pointer-events: none; }
@@ -485,20 +433,6 @@ p, .sub-text { margin: 0; color: var(--text-soft); font-weight: 400; letter-spac
 .footer ul a:hover { color: var(--text); }
 .footer p { font-size: 14px; line-height: 1.6; }
 .footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 28px; border-top: 1px solid var(--line-soft); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mute); }
-
-.whatsapp { position: fixed; right: 24px; bottom: 24px; z-index: 80; display: inline-flex; align-items: center; gap: 12px; padding: 14px 20px 14px 18px; background: #25d366; color: #fff; border-radius: 999px; font-family: var(--font-sans); font-size: 14px; font-weight: 600; letter-spacing: -0.005em; box-shadow: 0 8px 28px rgba(37, 211, 102, 0.35), 0 1px 3px rgba(0, 0, 0, 0.2); transition: transform var(--t-base) var(--ease-out), box-shadow var(--t-base); }
-.whatsapp:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2); color:#fff; }
-.whatsapp svg { width: 22px; height: 22px; fill:#fff;}
-.whatsapp__label { display: none; }
-@media (min-width: 640px) { .whatsapp__label { display: inline; } }
-.glass-card {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 40px 48px;
-}
 
 /* =========================================================
    CodeCrafter — animations.css
@@ -570,8 +504,6 @@ p, h1, h2, h3, h4, h5, li, a, span, div { overflow-wrap: break-word; word-wrap: 
   .hero__cols { gap: 28px; width: 100%; }
   .hero__col-left, .hero__col-right { width: 100%; min-width: 0; max-width: 100%; gap: 18px; }
   .hero__col-left { padding-top: 4px; }
-  .hero__badge { font-size: 10px; padding: 5px 10px; letter-spacing: 0.1em; gap: 6px; }
-  .hero__star { width: 12px; height: 12px; }
   .hero__title { font-size: clamp(32px, 10vw, 44px); line-height: 0.98; letter-spacing: -0.035em; }
   .hero__sub { font-size: 14px; line-height: 1.55; max-width: 100%; }
   .hero__cta { gap: 10px; flex-direction: column; }
@@ -624,7 +556,6 @@ p, h1, h2, h3, h4, h5, li, a, span, div { overflow-wrap: break-word; word-wrap: 
   .station-card__price .unit { font-size: 12px; }
   .station-card .btn--block { padding: 12px 16px; font-size: 13px; }
 
-  .toggle-wrap { margin-bottom: 24px; }
   .toggle { padding: 3px; width: 100%; }
   .toggle__btn { flex: 1; justify-content: center; padding: 10px 12px; font-size: 12px; gap: 6px; }
    .toggle__badge { font-size: 9px; padding: 1px 5px; }
@@ -641,24 +572,12 @@ p, h1, h2, h3, h4, h5, li, a, span, div { overflow-wrap: break-word; word-wrap: 
   .plan__list li { font-size: 12px; padding-left: 0; line-height: 1.5; }
   .plan__list li::before { font-size: 12px; }
   .plan .btn--block { padding: 12px 16px; font-size: 13px; }
-  .pricing-note { margin-top: 20px; font-size: 11px; }
 
   .why-grid { border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
   .why-card { padding: 20px; gap: 8px; min-width: 0; border-radius: 12px; }
   .why-card__num { font-size: 10px; }
   .why-card h3 { font-size: 16px; }
   .why-card p { font-size: 13px; line-height: 1.5; }
-
-  .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 120px; gap: 8px; }
-  .gallery__item--tall { grid-row: span 2; }
-  .gallery__item--wide { grid-column: span 2; }
-  .gallery__item { border-radius: 8px; }
-
-  .quotes { gap: 12px; }
-  .quote { padding: 20px; gap: 14px; min-width: 0; border-radius: 12px; }
-  .quote p { font-size: 14px; line-height: 1.45; }
-  .quote footer b { font-size: 13px; }
-  .quote footer span { font-size: 10px; }
 
   .book { border-radius: 12px; padding: 28px 20px; }
   .book__beam { display: none; }
@@ -690,10 +609,6 @@ p, h1, h2, h3, h4, h5, li, a, span, div { overflow-wrap: break-word; word-wrap: 
   .footer ul a { font-size: 13px; }
   .footer p { font-size: 13px; line-height: 1.55; }
   .footer__bottom { font-size: 9px; letter-spacing: 0.08em; gap: 6px; }
-
-  .whatsapp { right: 14px; bottom: 14px; padding: 12px; gap: 0; }
-  .whatsapp svg { width: 22px; height: 22px; }
-  .whatsapp__label { display: none !important; }
 }
 
 @media (max-width: 360px) {
@@ -709,12 +624,10 @@ p, h1, h2, h3, h4, h5, li, a, span, div { overflow-wrap: break-word; word-wrap: 
   .plan { padding: 18px; }
   .plan__price .amount { font-size: 26px; }
   .book { padding: 24px 18px; }
-
-  .glass-card { padding: 28px 20px; border-radius: 12px; }
 }
 
 @media (max-width: 720px) and (hover: none) and (pointer: coarse) {
-  .hero-card, .hero__badge, .game-card__tag, .station-card, .plan, .quote, .why-card, .book { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .hero-card, .game-card__tag, .station-card, .plan, .why-card, .book { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
   .hero__title { -webkit-mask-image: none !important; mask-image: none !important; }
   .hero-card__glow { display: none !important; }
 }
@@ -736,7 +649,7 @@ body, section {
 
 * { -webkit-tap-highlight-color: transparent; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-a, button, .pill, .game-card, .station-card, .plan, .why-card, .quote, .book { touch-action: manipulation; }
+a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-action: manipulation; }
 .hero-card__marquee-track, .marquee__track { will-change: transform; }
 .low-end .hero-card__marquee-track { animation-duration: 30s; }
 .low-end .marquee__track { animation-duration: 35s; }
@@ -772,12 +685,12 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .quote, .book { t
       <a href="#process">About</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <button class="nav__burger" aria-label="Open menu" id="burger">
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="burger">
       <span></span><span></span><span></span>
     </button>
   </header>
 
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
     <a href="#work">Work</a>
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
@@ -938,21 +851,21 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .quote, .book { t
         <div class="games-grid">
           <a href="https://japanese-restaurant.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal style="--i:0">
             <div class="game-card__art">
-              <img loading="lazy" alt="Tenka Project" width="1200" height="675" src="https://japanese-restaurant.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
+              <img loading="lazy" alt="Japanese Restaurant" width="1200" height="675" src="https://japanese-restaurant.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
               <span class="game-card__tag">Restaurant</span>
             </div>
             <div class="game-card__meta"><h3>Japanese Restaurant</h3></div>
           </a>
           <a href="https://japanese-ramen.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="60" style="--i:1">
             <div class="game-card__art">
-              <img loading="lazy" alt="Miyabi Project" width="1200" height="675" src="https://japanese-ramen.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
+              <img loading="lazy" alt="Ramen Restaurant" width="1200" height="675" src="https://japanese-ramen.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
               <span class="game-card__tag">Restaurant</span>
             </div>
             <div class="game-card__meta"><h3>Ramen Restaurant</h3></div>
           </a>
           <a href="https://artisan-bakery.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="120" style="--i:2">
             <div class="game-card__art">
-              <img loading="lazy" alt="Aria Pro Earbuds" width="1200" height="675" src="https://artisan-bakery.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
+              <img loading="lazy" alt="Artisan Bakery" width="1200" height="675" src="https://artisan-bakery.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
               <span class="game-card__tag">Bakery</span>
             </div>
             <div class="game-card__meta"><h3>Artisan Bakery</h3></div>
@@ -980,7 +893,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .quote, .book { t
           </a>
           <a href="https://software.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="360" style="--i:6">
             <div class="game-card__art" style="background: #0a0a0c; overflow: hidden;">
-              <img loading="lazy" alt="Wildflour" width="1200" height="675" src="https://software.akshaycodecrafter.workers.dev/assets/preview-hero.png" style="width: 100%; height: 100%; object-fit: cover; filter: contrast(1.2) brightness(0.9);" />
+              <img loading="lazy" alt="Software Concept" width="1200" height="675" src="https://software.akshaycodecrafter.workers.dev/assets/preview-hero.png" style="width: 100%; height: 100%; object-fit: cover; filter: contrast(1.2) brightness(0.9);" />
               <span class="game-card__tag">Software</span>
             </div>
             <div class="game-card__meta"><h3>Software-Concept</h3></div>
@@ -1183,7 +1096,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .quote, .book { t
           </div>
           <div class="section__row">
             <h2 class="section__title reveal" data-reveal>
-              <span>Crafted with AI.</span> <span class="accent">Perfected by hand.</span>
+              <span>Crafted with Code.</span> <span class="accent">Perfected by hand.</span>
             </h2>
           </div>
         </header>
@@ -1334,13 +1247,13 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .quote, .book { t
   const mobileMenu = $('#mobileMenu');
   if (burger && mobileMenu) {
     const setOpen = (open) => {
-      burger.classList.toggle('is-open', open);
+      burger.classList.toggle('is-open', open); burger.setAttribute('aria-expanded', String(open)); burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       mobileMenu.classList.toggle('is-open', open);
-      mobileMenu.setAttribute('aria-hidden', String(!open));
+      mobileMenu.setAttribute('aria-hidden', String(!open)); mobileMenu.inert = !open;
       document.body.style.overflow = open ? 'hidden' : '';
     };
     burger.addEventListener('click', () => setOpen(!mobileMenu.classList.contains('is-open')));
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { setOpen(false); burger.focus(); }));
   }
 
   const glow = $('.cursor-glow');
@@ -1397,29 +1310,9 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .quote, .book { t
   if (document.readyState === 'complete') { onLoad(); }
   else { window.addEventListener('load', onLoad); }
 
-  const toggleBtns = $$('.toggle__btn');
-  const plansHourly = $('#plansHourly');
-  const plansMonthly = $('#plansMonthly');
-  if (toggleBtns.length && plansHourly && plansMonthly) {
-    toggleBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        toggleBtns.forEach((b) => b.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        const bill = btn.getAttribute('data-bill');
-        if (bill === 'monthly') {
-          plansHourly.classList.add('is-hidden');
-          plansMonthly.classList.remove('is-hidden');
-        } else {
-          plansMonthly.classList.add('is-hidden');
-          plansHourly.classList.remove('is-hidden');
-        }
-      });
-    });
-  }
-
   $$('img').forEach((img) => {
     img.addEventListener('error', () => {
-      const parent = img.closest('.game-card__art, .gallery__item');
+      const parent = img.closest('.game-card__art');
       if (!parent) return;
       img.style.display = 'none';
       parent.classList.add('img-broken');
@@ -1468,8 +1361,8 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .quote, .book { t
       "alternateName": "CodeCrafter",
       "url": "https://codecrafter.akshaycodecrafter.workers.dev/",
       "email": "akshaycodecrafter@gmail.com",
-      "jobTitle": "Frontend Engineer & AI Automation Specialist",
-      "description": "AI-powered frontend engineer crafting cinematic websites and intelligent automation systems for businesses worldwide.",
+      "jobTitle": "Frontend Developer & Automation Specialist",
+      "description": "Freelance frontend developer crafting cinematic websites and automation systems for businesses worldwide.",
       "knowsAbout": ["Web Development", "GSAP", "Three.js", "Tailwind CSS", "JavaScript", "AI Automation", "n8n", "Supabase", "Cloudflare"],
       "sameAs": [
         "https://github.com/akshaycodecrafter-spec"
