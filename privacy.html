@@ -119,8 +119,11 @@
     .section-block {
       padding: 36px 0;
       border-bottom: 1px solid var(--line-soft);
-      opacity: 0; transform: translateY(24px);
+      opacity: 1; transform: none;
       transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+    }
+    .section-block.is-reveal-pending:not(.is-in) {
+      opacity: 0; transform: translateY(24px);
     }
     .section-block.is-in { opacity: 1; transform: none; }
     .section-block:last-child { border-bottom: none; }
@@ -175,7 +178,12 @@
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
-      .section-block { opacity: 1; transform: none; }
+      .section-block,
+      .section-block.is-reveal-pending { opacity: 1 !important; transform: none !important; }
+      .page-hero__kicker,
+      .page-hero__title,
+      .page-hero__meta,
+      .page-hero__line { opacity: 1 !important; transform: none !important; }
     }
     @media (max-width: 600px) {
       .nav { padding: 14px 16px; }
@@ -224,14 +232,14 @@
       <div class="section-block" data-reveal>
         <div class="section-block__num">02</div>
         <h2>How We Use Your Information</h2>
-        <p>Your information is used exclusively for project-related communication — discussing your requirements, providing quotes, sending deliverables, and handling post-delivery queries. We do not sell, rent, or share your data with any third parties.</p>
+        <p>We use the information you voluntarily provide only to respond to enquiries, discuss requirements, prepare quotations, deliver agreed work, and provide project-related support. We do not sell or rent personal information. When you contact us by email or WhatsApp, those services process your messages under their own privacy policies and terms. We treat your enquiry details as confidential and use them only for legitimate project-related communication.</p>
       </div>
 
       <div class="section-block" data-reveal>
         <div class="section-block__num">03</div>
         <h2>Data Storage</h2>
-        <p>Information shared through email or WhatsApp is retained only for the duration of the project and any reasonable follow-up period. This website does not operate a backend database or store your data on any server.</p>
-        <p>This site loads typography resources via Google Fonts, which may process requests through Google's servers in accordance with their own privacy policy.</p>
+        <p>This website does not operate a backend database or store enquiry submissions on its own website server. Messages sent through email or WhatsApp may be stored and processed by those providers under their own policies. We retain project-related information only for as long as reasonably necessary to handle enquiries, deliver and support projects, and meet applicable record-keeping obligations. We delete information when it is no longer needed, where appropriate.</p>
+        <p>This site loads fonts from Google Fonts, so your browser connects to Google's servers to retrieve typography resources. Google may process technical connection information under its own privacy terms.</p>
       </div>
 
       <div class="section-block" data-reveal>
@@ -263,6 +271,7 @@
   <script>
   (() => {
     const blocks = document.querySelectorAll('[data-reveal]');
+    blocks.forEach((el) => el.classList.add('is-reveal-pending'));
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {

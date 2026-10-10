@@ -114,8 +114,11 @@
     .section-block {
       padding: 36px 0;
       border-bottom: 1px solid var(--line-soft);
-      opacity: 0; transform: translateY(24px);
+      opacity: 1; transform: none;
       transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+    }
+    .section-block.is-reveal-pending:not(.is-in) {
+      opacity: 0; transform: translateY(24px);
     }
     .section-block.is-in { opacity: 1; transform: none; }
     .section-block:last-child { border-bottom: none; }
@@ -167,7 +170,12 @@
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
-      .section-block { opacity: 1; transform: none; }
+      .section-block,
+      .section-block.is-reveal-pending { opacity: 1 !important; transform: none !important; }
+      .page-hero__kicker,
+      .page-hero__title,
+      .page-hero__meta,
+      .page-hero__line { opacity: 1 !important; transform: none !important; }
     }
     @media (max-width: 600px) {
       .nav { padding: 14px 16px; }
@@ -210,13 +218,13 @@
       <div class="section-block" data-reveal>
         <div class="section-block__num">01</div>
         <h2>Payment Terms</h2>
-        <p>A 50% advance payment is required before any work begins. The remaining 50% is due upon final delivery and approval. All payments are non-refundable once work has commenced, as this covers the time, research, and design effort invested from day one.</p>
+        <p>A 50% advance payment is required before any work begins. The remaining 50% is due upon final delivery and client approval. All payments are non-refundable once work has commenced, as this covers the time, research, and design effort invested from day one.</p>
       </div>
 
       <div class="section-block" data-reveal>
         <div class="section-block__num">02</div>
         <h2>Revision Policy</h2>
-        <p>Each project plan includes a set number of revision rounds. Feedback must be provided during the active revision period. Once revisions are complete, any additional changes — including design alterations, content updates, or new features — will be charged separately as a new task.</p>
+        <p>Revision allowances depend on the selected package. Landing Pages includes two revision rounds, Cinematic Sites includes five revision rounds, and AI Automation includes unlimited in-scope refinements during the project. In-scope refinements cover corrections, reasonable updates, and improvements to content or functionality already included in the agreed scope. After launch, the included 30-day support period covers bugs or implementation issues in the delivered work. New pages, features, integrations, major redesigns, or other work outside the agreed scope require a separate quote and written approval before work begins.</p>
       </div>
 
       <div class="section-block" data-reveal>
@@ -272,6 +280,7 @@
   <script>
   (() => {
     const blocks = document.querySelectorAll('[data-reveal]');
+    blocks.forEach((el) => el.classList.add('is-reveal-pending'));
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
