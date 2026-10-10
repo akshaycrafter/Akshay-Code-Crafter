@@ -101,6 +101,20 @@ p { margin: 0; color: var(--text-soft); font-weight: 400; letter-spacing: -0.01e
 .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
 .section { padding: clamp(72px, 10vw, 140px) 0; position: relative; scroll-margin-top: 120px; }
 .section--stations, .section--why, .section--faq { border-top: 1px solid var(--line-soft); }
+
+/* Pricing section — staggered plan card entrance animation */
+.section--pricing .plan {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.section--pricing .plan.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.section--pricing .plan:nth-child(1) { transition-delay: 0ms; }
+.section--pricing .plan:nth-child(2) { transition-delay: 120ms; }
+.section--pricing .plan:nth-child(3) { transition-delay: 240ms; }
 .section__head {
   display: grid; grid-template-columns: 1fr; gap: 28px;
   margin-bottom: clamp(40px, 6vw, 72px);
@@ -415,8 +429,9 @@ p { margin: 0; color: var(--text-soft); font-weight: 400; letter-spacing: -0.01e
 .faq__item[open] .faq__icon { border-color: var(--accent); transform: rotate(180deg); }
 .faq__item[open] .faq__icon::after { transform: translate(-50%, -50%) scaleY(0); }
 .faq__item[open] .faq__icon::before { background: var(--accent); }
-.faq__body { padding: 0 4px 28px; max-width: 64ch; }
+.faq__body { padding: 0 4px 28px; max-width: 64ch; overflow: hidden; opacity: 0; transform: translateY(-8px); transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out); }
 .faq__body p { font-size: 15px; line-height: 1.6; color: var(--text-soft); }
+.faq__item[open] .faq__body { opacity: 1; transform: translateY(0); }
 
 .footer { border-top: 1px solid var(--line-soft); padding: 80px 0 40px; background: var(--bg-inset); }
 .footer__grid { display: grid; grid-template-columns: 1fr; gap: 48px; margin-bottom: 56px; }
@@ -446,8 +461,6 @@ p { margin: 0; color: var(--text-soft); font-weight: 400; letter-spacing: -0.01e
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out); transition-delay: var(--reveal-delay, 0ms); will-change: opacity, transform; }
 .reveal.is-in { opacity: 1; transform: none; }
 html:not(.js) .reveal { opacity: 1; transform: none; }
-html.js .reveal:not(.is-in) { animation: revealIn 700ms var(--ease-out) 1.5s both; }
-@keyframes revealIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
 @keyframes fadeIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
 @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
 @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.3); } }
@@ -682,7 +695,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
       <a href="#work">Work</a>
       <a href="#services">Services</a>
       <a href="#pricing">Pricing</a>
-      <a href="#process">About</a>
+      <a href="#process">Why Me</a>
       <a href="#faq">FAQ</a>
     </nav>
     <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" id="burger">
@@ -694,7 +707,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
     <a href="#work">Work</a>
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
-    <a href="#process">About</a>
+    <a href="#process">Why Me</a>
     <a href="#faq">FAQ</a>
     <a class="btn btn--primary" href="#book">Hire Me</a>
   </div>
@@ -747,6 +760,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
                   </div>
                 </header>
 
+                <!-- TODO: UPDATE MANUALLY — Change "70% Full" text and width: 70% style below each time bookings change -->
                 <div class="hero-card__progress">
                   <div class="hero-card__progress-row">
                     <span>Booking 2026</span>
@@ -854,84 +868,84 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
               <img loading="lazy" alt="Japanese Restaurant" width="1200" height="675" src="https://japanese-restaurant.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
               <span class="game-card__tag">Restaurant</span>
             </div>
-            <div class="game-card__meta"><h3>Japanese Restaurant</h3></div>
+            <div class="game-card__meta"><h3>Japanese Restaurant</h3><span>Elegant fine-dining experience with a cinematic dark UI</span></div>
           </a>
           <a href="https://japanese-ramen.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="60" style="--i:1">
             <div class="game-card__art">
               <img loading="lazy" alt="Ramen Restaurant" width="1200" height="675" src="https://japanese-ramen.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
               <span class="game-card__tag">Restaurant</span>
             </div>
-            <div class="game-card__meta"><h3>Ramen Restaurant</h3></div>
+            <div class="game-card__meta"><h3>Ramen Restaurant</h3><span>Immersive ramen bar concept built for modern food culture</span></div>
           </a>
           <a href="https://artisan-bakery.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="120" style="--i:2">
             <div class="game-card__art">
               <img loading="lazy" alt="Artisan Bakery" width="1200" height="675" src="https://artisan-bakery.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
               <span class="game-card__tag">Bakery</span>
             </div>
-            <div class="game-card__meta"><h3>Artisan Bakery</h3></div>
+            <div class="game-card__meta"><h3>Artisan Bakery</h3><span>Warm, premium bakery brand with a handcrafted aesthetic</span></div>
           </a>
           <a href="https://lumire-hospital.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="180" style="--i:3">
             <div class="game-card__art">
               <img loading="lazy" alt="Lumière Hospital" width="1200" height="675" src="https://lumire-hospital.akshaycodecrafter.workers.dev/assets/1788548544244_image.png" />
               <span class="game-card__tag">Healthcare</span>
             </div>
-            <div class="game-card__meta"><h3>Lumière Hospital</h3></div>
+            <div class="game-card__meta"><h3>Lumière Hospital</h3><span>Trust-first healthcare platform with a clean, clinical design</span></div>
           </a>
           <a href="https://akshay-concept.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="240" style="--i:4">
             <div class="game-card__art">
               <img loading="lazy" alt="WhatsApp AI Agent" width="1200" height="675" src="https://akshay-concept.akshaycodecrafter.workers.dev/assets/charcoal-hero.png" />
               <span class="game-card__tag">Automation</span>
             </div>
-            <div class="game-card__meta"><h3>Akshay-Concept</h3></div>
+            <div class="game-card__meta"><h3>AI WhatsApp Agent</h3><span>Live automation demo — lead capture powered by Gemini AI</span></div>
           </a>
           <a href="https://karna.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="300" style="--i:5">
             <div class="game-card__art">
               <img loading="lazy" alt="GYM" width="1200" height="675" src="https://karna.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
               <span class="game-card__tag">Fitness</span>
             </div>
-            <div class="game-card__meta"><h3>karna</h3></div>
+            <div class="game-card__meta"><h3>Karna Fitness</h3><span>High-intensity gym brand with bold dark-mode presence</span></div>
           </a>
           <a href="https://software.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="360" style="--i:6">
             <div class="game-card__art" style="background: #0a0a0c; overflow: hidden;">
               <img loading="lazy" alt="Software Concept" width="1200" height="675" src="https://software.akshaycodecrafter.workers.dev/assets/preview-hero.png" style="width: 100%; height: 100%; object-fit: cover; filter: contrast(1.2) brightness(0.9);" />
               <span class="game-card__tag">Software</span>
             </div>
-            <div class="game-card__meta"><h3>Software-Concept</h3></div>
+            <div class="game-card__meta"><h3>SaaS Platform</h3><span>Minimal software product page built for conversion</span></div>
           </a>
           <a href="https://gaming-cafe.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="420" style="--i:7">
             <div class="game-card__art">
               <img loading="lazy" alt="FRAGG" width="1200" height="675" src="https://gaming-cafe.akshaycodecrafter.workers.dev/assets/preview-1-hero.png" />
               <span class="game-card__tag">Gaming</span>
             </div>
-            <div class="game-card__meta"><h3>Akshay-Gaming-Cafe</h3></div>
+            <div class="game-card__meta"><h3>Gaming Café</h3><span>Neon-charged gaming lounge concept with full atmosphere</span></div>
           </a>
           <a href="https://project-himawari.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="480" style="--i:8">
             <div class="game-card__art">
               <img loading="lazy" alt="project-himawari" width="1200" height="675" src="https://project-himawari.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
               <span class="game-card__tag">Fitness</span>
             </div>
-            <div class="game-card__meta"><h3>project-himawari</h3></div>
+            <div class="game-card__meta"><h3>Project Himawari</h3><span>Yoga & wellness studio with a serene Japanese-inspired feel</span></div>
           </a>
           <a href="https://voxel-ai.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="540" style="--i:9">
             <div class="game-card__art">
               <img loading="lazy" alt="voxel-ai" width="1200" height="675" src="https://voxel-ai.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
               <span class="game-card__tag">AI</span>
             </div>
-            <div class="game-card__meta"><h3>voxel-ai</h3></div>
+            <div class="game-card__meta"><h3>Voxel AI</h3><span>Next-gen AI product landing page with futuristic dark design</span></div>
           </a>
           <a href="https://project-forgis.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="600" style="--i:10">
             <div class="game-card__art">
               <img loading="lazy" alt="Project-forgis" width="1200" height="675" src="https://github.com/akshaycrafter/Project-forgis/raw/main/assets/forgis_hero.png" />
               <span class="game-card__tag">Fitness</span>
             </div>
-            <div class="game-card__meta"><h3>Project-forgis</h3></div>
+            <div class="game-card__meta"><h3>Project Forgis</h3><span>CrossFit & performance training brand with raw visual energy</span></div>
           </a>
           <a href="https://obscura.akshaycodecrafter.workers.dev/" target="_blank" rel="noopener noreferrer" class="game-card reveal" data-reveal data-reveal-delay="660" style="--i:11">
             <div class="game-card__art">
               <img loading="lazy" alt="OBSCURA" width="1200" height="675" src="https://obscura.akshaycodecrafter.workers.dev/assets/preview-hero.png" />
               <span class="game-card__tag">Restaurant</span>
             </div>
-            <div class="game-card__meta"><h3>OBSCURA</h3></div>
+            <div class="game-card__meta"><h3>OBSCURA</h3><span>Mysterious upscale dining concept — dark, dramatic, unforgettable</span></div>
           </a>
         </div>
       </div>
@@ -970,7 +984,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
             <ul class="station-card__spec">
               <li><span>Stack</span><b>HTML / CSS / JavaScript</b></li>
               <li><span>Design</span><b>Responsive & Pixel-Perfect</b></li>
-              <li><span>Delivery</span><b>3–5 Business Days</b></li>
+              <li><span>Delivery</span><b>4–5 Business Days</b></li>
               <li><span>SEO</span><b>On-Page Meta Optimised</b></li>
               <li><span>Revisions</span><b>2 Revision Rounds</b></li>
             </ul>
@@ -979,7 +993,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
               <span class="amount inr-price" data-currency="inr">₹8,999</span>
               <span class="amount usd-price" data-currency="usd" style="display: none;">$99</span>
             </div>
-            <a class="btn btn--ghost btn--block" href="#book">Discuss Project</a>
+            <a class="btn btn--ghost btn--block" href="#book">Get a Quote</a>
           </article>
 
           <article class="station-card station-card--featured reveal" data-reveal data-reveal-delay="100" style="--i:1">
@@ -990,7 +1004,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
             <ul class="station-card__spec">
               <li><span>Stack</span><b>HTML / CSS / JavaScript</b></li>
               <li><span>Design</span><b>Cinematic Dark UI & Animations</b></li>
-              <li><span>Delivery</span><b>7 Business Days</b></li>
+              <li><span>Delivery</span><b>9–10 Business Days</b></li>
               <li><span>Performance</span><b>Lighthouse 90+ Score</b></li>
               <li><span>Revisions</span><b>5 Revision Rounds</b></li>
             </ul>
@@ -1018,7 +1032,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
               <span class="amount inr-price" data-currency="inr">₹24,999</span>
               <span class="amount usd-price" data-currency="usd" style="display: none;">$499</span>
             </div>
-            <a class="btn btn--ghost btn--block" href="#book">Automate Now</a>
+            <a class="btn btn--ghost btn--block" href="#book">Start AI Setup</a>
           </article>
         </div>
       </div>
@@ -1144,6 +1158,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
               <li><span>·</span> Full customization included</li>
               <li><span>·</span> Clean handover, ready to launch</li>
               <li><span>·</span> Yours completely</li>
+              <li><span>·</span> WhatsApp: <a href="https://wa.me/916393588686" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; letter-spacing: 0.02em;">+91 63935 88686</a></li>
             </ul>
           </div>
         </div>
@@ -1154,7 +1169,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
       <div class="container">
         <header class="section__head">
           <div class="section__kicker reveal" data-reveal>
-            <span class="kicker-num">07</span>
+            <span class="kicker-num">05</span>
             <span class="kicker-line"></span>
             <span class="kicker-text">FAQ</span>
           </div>
@@ -1172,7 +1187,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
           </details>
           <details class="faq__item reveal" data-reveal data-reveal-delay="60">
             <summary><span>Who is responsible for hosting and domain?</span><span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__body"><p>Hosting and domain are the client's responsibility. I will build and deliver your website files fully ready for deployment. I can guide you through the setup process, but purchasing and managing the hosting plan is on your end.</p></div>
+            <div class="faq__body"><p><b>Standard:</b> The deliverable is the live website link only. Source-code files and deployment handover to a client-controlled hosting environment are not included.<br/><b>Premium:</b> The package includes deployment to the hosting environment agreed for the project, with source-code handover.</p><p>Hosting and domain registration are the client's responsibility. I will guide you through the setup process, but purchasing and managing the hosting plan — and account access — remain on your end, as set out in the written project scope.</p></div>
           </details>
           <details class="faq__item reveal" data-reveal data-reveal-delay="120">
             <summary><span>What happens if I need changes after revisions are complete?</span><span class="faq__icon" aria-hidden="true"></span></summary>
@@ -1184,7 +1199,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
           </details>
           <details class="faq__item reveal" data-reveal data-reveal-delay="240">
             <summary><span>Who owns the website after delivery?</span><span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__body"><p>Once the final payment is made, the delivered website — including all content, design, and assets — belongs to you. The underlying code structure remains proprietary to CodeCrafter and may be used across other projects.</p></div>
+            <div class="faq__body"><p><b>Standard:</b> The deliverable is the live website link only. The client does not receive the source-code files.</p><p><b>Premium:</b> The client receives the website source code and the agreed deployment.</p><p>Upon full payment, all delivered website content — including text, images, graphics, and custom design — belongs to the client. CodeCrafter's underlying code structure, base templates, and reusable components remain proprietary and may be used across other projects.</p></div>
           </details>
         </div>
       </div>
@@ -1200,7 +1215,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
             </div>
             <p>Cinematic websites & intelligent automation systems for businesses that want to stand out.</p>
             <div class="footer__contact">
-              <a href="https://wa.me/916393588686" target="_blank" rel="noopener">WhatsApp</a>
+              <a href="https://wa.me/916393588686" target="_blank" rel="noopener">WhatsApp · +91 63935 88686</a>
               <a href="mailto:akshaycodecrafter@gmail.com">akshaycodecrafter@gmail.com</a>
             </div>
           </div>
@@ -1213,7 +1228,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
             <ul>
               <li><a href="#services">Cinematic Websites</a></li>
               <li><a href="#services">Landing Pages</a></li>
-              <li><a href="#services">AI Prototyping</a></li>
+              <li><a href="#services">Crafted by Hand</a></li>
               <li><a href="#services">WhatsApp Bots</a></li>
             </ul>
           </div>
@@ -1295,6 +1310,19 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
     showAll();
   }
 
+  // Pricing section plan cards — staggered entrance
+  const pricingPlans = document.querySelectorAll('.section--pricing .plan');
+  if (pricingPlans.length) {
+    const planIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        planIO.unobserve(entry.target);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    pricingPlans.forEach((el) => planIO.observe(el));
+  }
+
   const fadeIns = $$('.animate-fade-in');
   let fadesShown = false;
   const showFades = () => {
@@ -1304,7 +1332,6 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
   };
 
   const onLoad = () => {
-    showAll();
     showFades();
   };
   if (document.readyState === 'complete') { onLoad(); }
@@ -1348,6 +1375,30 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
   if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) {
     document.documentElement.classList.add('low-end');
   }
+
+  // FAQ accordion — smooth open/close animation
+  document.querySelectorAll('.faq__item').forEach((item) => {
+    const body = item.querySelector('.faq__body');
+    if (!body) return;
+    item.addEventListener('click', (e) => {
+      if (!e.target.closest('summary')) return;
+      e.preventDefault();
+      const isOpen = item.hasAttribute('open');
+      if (isOpen) {
+        body.style.opacity = '0';
+        body.style.transform = 'translateY(-8px)';
+        setTimeout(() => { item.removeAttribute('open'); }, 340);
+      } else {
+        item.setAttribute('open', '');
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            body.style.opacity = '1';
+            body.style.transform = 'translateY(0)';
+          });
+        });
+      }
+    });
+  });
 })();
   </script>
 <script type="application/ld+json">
@@ -1398,11 +1449,11 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "How long does a website take?", "acceptedAnswer": { "@type": "Answer", "text": "Most single-page websites are delivered in 2-4 days. Multi-section sites with animations take 5-7 days. AI automation setups usually take 3-5 days depending on complexity." } },
-        { "@type": "Question", "name": "Do you work with local businesses?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Most of my clients are local restaurants, gaming cafes, gyms, and small businesses. I understand what works for local audiences." } },
-        { "@type": "Question", "name": "What's included in a website package?", "acceptedAnswer": { "@type": "Answer", "text": "Every package includes responsive design, scroll animations, SEO optimization, deployment on Cloudflare Pages, and 30 days of free support." } },
-        { "@type": "Question", "name": "Can you redesign my existing website?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! I specialize in taking outdated websites and rebuilding them with modern, cinematic design. Send me your current site for a free audit." } },
-        { "@type": "Question", "name": "Do you offer maintenance after delivery?", "acceptedAnswer": { "@type": "Answer", "text": "Every project comes with 30 days of free maintenance. After that, I offer affordable monthly plans for ongoing updates and technical support." } }
+        { "@type": "Question", "name": "What is your payment structure?", "acceptedAnswer": { "@type": "Answer", "text": "50% advance payment is required before any work begins. The remaining 50% is due upon final delivery. All payments are non-refundable once the project has been initiated — this covers the time, research, and design effort invested from day one." } },
+        { "@type": "Question", "name": "Who is responsible for hosting and domain?", "acceptedAnswer": { "@type": "Answer", "text": "STANDARD: The deliverable is the live website link only. Source-code files and deployment handover to a client-controlled hosting environment are not included. PREMIUM: The package includes deployment to the hosting environment agreed for the project, with source-code handover. Hosting and domain registration are the client's responsibility. I will guide you through the setup process, but purchasing and managing the hosting plan and account access remain on your end, as set out in the written project scope." } },
+        { "@type": "Question", "name": "What happens if I need changes after revisions are complete?", "acceptedAnswer": { "@type": "Answer", "text": "All feedback and design decisions should be shared during the active revision rounds included in your plan. Once those rounds are complete, any additional changes — including design alterations, content updates, or new sections — will be charged separately as a new task." } },
+        { "@type": "Question", "name": "Do you sign a contract before starting?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Before any work begins, a simple written agreement is shared outlining the project scope, timeline, payment terms, and deliverables. This protects both parties and ensures there are no surprises at the end." } },
+        { "@type": "Question", "name": "Who owns the website after delivery?", "acceptedAnswer": { "@type": "Answer", "text": "STANDARD: The deliverable is the live website link only. The client does not receive the source-code files. PREMIUM: The client receives the website source code and the agreed deployment. Upon full payment, all delivered website content — including text, images, graphics, and custom design — belongs to the client. CodeCrafter's underlying code structure, base templates, and reusable components remain proprietary and may be used across other projects." } }
       ]
     }
   ]
