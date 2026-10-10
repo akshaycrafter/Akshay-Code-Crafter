@@ -9,13 +9,10 @@
   <link rel="canonical" href="https://akshay-code.akshaycodecrafter.workers.dev/" />
   <meta property="og:title" content="CodeCrafter — Websites & AI Automation" />
   <meta property="og:description" content="Explore original website concepts, conversion-focused landing pages, and tailored automation for businesses. Find a direction for your brand and request a custom build." />
-  <meta property="og:image" content="https://akshay-code.akshaycodecrafter.workers.dev/og-image.png" />
   <meta property="og:url" content="https://akshay-code.akshaycodecrafter.workers.dev/" />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="CodeCrafter — Websites & AI Automation" />
   <meta name="twitter:description" content="Explore original website concepts, conversion-focused landing pages, and tailored automation for businesses. Find a direction for your brand and request a custom build." />
-  <meta name="twitter:image" content="https://akshay-code.akshaycodecrafter.workers.dev/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -431,9 +428,8 @@ p { margin: 0; color: var(--text-soft); font-weight: 400; letter-spacing: -0.01e
 .faq__item[open] .faq__icon { border-color: var(--accent); transform: rotate(180deg); }
 .faq__item[open] .faq__icon::after { transform: translate(-50%, -50%) scaleY(0); }
 .faq__item[open] .faq__icon::before { background: var(--accent); }
-.faq__body { padding: 0 4px 28px; max-width: 64ch; overflow: hidden; opacity: 0; transform: translateY(-8px); transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out); }
+.faq__body { padding: 0 4px 28px; max-width: 64ch; overflow: hidden; opacity: 1; transform: none; transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out); }
 .faq__body p { font-size: 15px; line-height: 1.6; color: var(--text-soft); }
-.faq__item[open] .faq__body { opacity: 1; transform: translateY(0); }
 
 .footer { border-top: 1px solid var(--line-soft); padding: 80px 0 40px; background: var(--bg-inset); }
 .footer__grid { display: grid; grid-template-columns: 1fr; gap: 48px; margin-bottom: 56px; }
@@ -966,7 +962,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
               <span>Solutions that</span> <span class="accent">move business.</span>
             </h2>
             <p class="section__lede reveal" data-reveal data-reveal-delay="100">
-              From conversion-focused landing pages to cinematic multi-page websites and tailored AI automation, each project is shaped around your goals and agreed scope.
+              From conversion-focused landing pages to cinematic multi-page websites and tailored AI automation, each project is shaped around your goals and agreed scope. The Standard and Premium cards represent the two website package tiers, while AI Automation is offered as a separate service. The selected tier, scope, timeline, and deliverables are confirmed in writing before work begins.
             </p>
           </div>
         </header>
@@ -981,7 +977,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
         <div class="stations-grid">
           <article class="station-card reveal" data-reveal style="--i:0">
             <div class="station-card__index">01</div>
-            <h3 class="station-card__name">Landing Pages</h3>
+            <h3 class="station-card__name">Standard</h3>
             <p class="station-card__desc">Conversion-focused pages optimized for speed and SEO. No bloated frameworks, just pure performance.</p>
             <ul class="station-card__spec">
               <li><span>Stack</span><b>HTML / CSS / JavaScript</b></li>
@@ -1001,7 +997,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
           <article class="station-card station-card--featured reveal" data-reveal data-reveal-delay="100" style="--i:1">
             <div class="station-card__ribbon">Most picked</div>
             <div class="station-card__index">02</div>
-            <h3 class="station-card__name">Cinematic Sites</h3>
+            <h3 class="station-card__name">Premium</h3>
             <p class="station-card__desc">Dark, animated, premium websites that make clients gasp. Perfect for restaurants, agencies, and high-end brands.</p>
             <ul class="station-card__spec">
               <li><span>Stack</span><b>HTML / CSS / JavaScript</b></li>
@@ -1118,17 +1114,9 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
         </header>
 
         <div class="why-grid">
-          <article class="why-card reveal" data-reveal style="--i:0"><span class="why-card__num">01</span><h3>Delivered in Days, Not Weeks.</h3><p>Most projects go live in 3–7 days. No endless back-and-forth, no missed deadlines.</p></article>
+          <article class="why-card reveal" data-reveal style="--i:0"><span class="why-card__num">01</span><h3>Clear Timelines, Agreed Up Front.</h3><p>Every project follows a clearly defined timeline based on your selected service, agreed scope, and required features. Delivery expectations are confirmed before work begins, with regular communication and timely updates if anything affects the schedule.</p></article>
           <article class="why-card reveal" data-reveal data-reveal-delay="80" style="--i:1"><span class="why-card__num">02</span><h3>Cinematic Quality, Startup Budget.</h3><p>You get agency-level design — dark, animated, premium — without the agency invoice.</p></article>
-          <article class="why-card reveal" data-reveal data-reveal-delay="160" style="--i:2">
-
-  <span class="why-card__num">03</span>
-
-  <h3>Mobile-First. Always.</h3>
-
-  <p>Every pixel adapts. Flawless on phone, tablet, desktop — no compromises.</p>
-
-</article>
+          <article class="why-card reveal" data-reveal data-reveal-delay="160" style="--i:2"><span class="why-card__num">03</span><h3>Mobile-First. Always.</h3><p>Every pixel adapts. Flawless on phone, tablet, desktop — no compromises.</p></article>
           <article class="why-card reveal" data-reveal data-reveal-delay="240" style="--i:3"><span class="why-card__num">04</span><h3>Built to Convert.</h3><p>Fast, SEO-ready, and designed to turn visitors into leads. Not just a pretty site.</p></article>
           <article class="why-card reveal" data-reveal data-reveal-delay="320" style="--i:4"><span class="why-card__num">05</span><h3>One Point of Contact.</h3><p>You talk directly to me — no account managers, no miscommunication, no delays.</p></article>
           <article class="why-card reveal" data-reveal data-reveal-delay="400" style="--i:5"><span class="why-card__num">06</span><h3>Post-Launch Support Included.</h3><p>I don't vanish after delivery. 30 days of support comes with every project.</p></article>
@@ -1189,11 +1177,11 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
           </details>
           <details class="faq__item reveal" data-reveal data-reveal-delay="60">
             <summary><span>Who is responsible for hosting and domain?</span><span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__body"><p><b>Standard:</b> The deliverable is the live website link only. Source-code files and deployment handover to a client-controlled hosting environment are not included.<br/><b>Premium:</b> The package includes deployment to the hosting environment agreed for the project, with source-code handover.</p><p>Hosting and domain registration are the client's responsibility. I will guide you through the setup process, but purchasing and managing the hosting plan — and account access — remain on your end, as set out in the written project scope.</p></div>
+            <div class="faq__body"><p>The service cards describe the type of work; Standard and Premium identify the project package tier. The selected tier and its deliverables are confirmed in the written project scope.</p><p><b>Standard:</b> The deliverable is the live website link only. Source-code files and deployment handover to a client-controlled hosting environment are not included.<br/><b>Premium:</b> The package includes deployment to the hosting environment agreed for the project, with source-code handover.</p><p>Hosting and domain registration are the client's responsibility. I will guide you through the setup process, but purchasing and managing the hosting plan — and account access — remain on your end, as set out in the written project scope.</p></div>
           </details>
           <details class="faq__item reveal" data-reveal data-reveal-delay="120">
             <summary><span>What happens if I need changes after revisions are complete?</span><span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__body"><p>For Landing Pages and Cinematic Sites, the included revision rounds are listed on the service cards. The AI Automation package includes unlimited in-scope refinements during the project. After launch, 30 days of support covers bugs or issues with the delivered implementation. New pages, features, integrations, major redesigns, or requests outside the agreed scope require a separate quote and written approval.</p></div>
+            <div class="faq__body"><p>The Standard package includes two revision rounds, and the Premium package includes five revision rounds. The AI Automation service includes unlimited in-scope refinements during the project. After launch, 30 days of support covers bugs or issues with the delivered implementation. New pages, features, integrations, major redesigns, or requests outside the agreed scope require a separate quote and written approval.</p></div>
           </details>
           <details class="faq__item reveal" data-reveal data-reveal-delay="180">
             <summary><span>Do you sign a contract before starting?</span><span class="faq__icon" aria-hidden="true"></span></summary>
@@ -1384,18 +1372,25 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
     if (!body) return;
     item.addEventListener('click', (e) => {
       if (!e.target.closest('summary')) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       e.preventDefault();
       const isOpen = item.hasAttribute('open');
       if (isOpen) {
         body.style.opacity = '0';
         body.style.transform = 'translateY(-8px)';
-        setTimeout(() => { item.removeAttribute('open'); }, 340);
+        setTimeout(() => {
+          item.removeAttribute('open');
+          body.style.opacity = '';
+          body.style.transform = '';
+        }, 350);
       } else {
         item.setAttribute('open', '');
+        body.style.opacity = '0';
+        body.style.transform = 'translateY(-8px)';
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
             body.style.opacity = '1';
-            body.style.transform = 'translateY(0)';
+            body.style.transform = 'none';
           });
         });
       }
@@ -1453,7 +1448,7 @@ a, button, .pill, .game-card, .station-card, .plan, .why-card, .book { touch-act
       "mainEntity": [
         { "@type": "Question", "name": "What is your payment structure?", "acceptedAnswer": { "@type": "Answer", "text": "A 50% advance payment is required before any work begins. The remaining 50% is due upon final delivery and client approval. All payments are non-refundable once work has commenced, as this covers the time, research, and design effort invested from day one." } },
         { "@type": "Question", "name": "Who is responsible for hosting and domain?", "acceptedAnswer": { "@type": "Answer", "text": "STANDARD: The deliverable is the live website link only. Source-code files and deployment handover to a client-controlled hosting environment are not included. PREMIUM: The package includes deployment to the hosting environment agreed for the project, with source-code handover. Hosting and domain registration are the client's responsibility. I will guide you through the setup process, but purchasing and managing the hosting plan and account access remain on your end, as set out in the written project scope." } },
-        { "@type": "Question", "name": "What happens if I need changes after revisions are complete?", "acceptedAnswer": { "@type": "Answer", "text": "For Landing Pages and Cinematic Sites, the included revision rounds are listed on the service cards. The AI Automation package includes unlimited in-scope refinements during the project. After launch, 30 days of support covers bugs or issues with the delivered implementation. New pages, features, integrations, major redesigns, or requests outside the agreed scope require a separate quote and written approval." } },
+        { "@type": "Question", "name": "What happens if I need changes after revisions are complete?", "acceptedAnswer": { "@type": "Answer", "text": "The Standard package includes two revision rounds, and the Premium package includes five revision rounds. The AI Automation service includes unlimited in-scope refinements during the project. After launch, 30 days of support covers bugs or issues with the delivered implementation. New pages, features, integrations, major redesigns, or requests outside the agreed scope require a separate quote and written approval." } },
         { "@type": "Question", "name": "Do you sign a contract before starting?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Before any work begins, a simple written agreement is shared outlining the project scope, timeline, payment terms, and deliverables. This protects both parties and ensures there are no surprises at the end." } },
         { "@type": "Question", "name": "Who owns the website after delivery?", "acceptedAnswer": { "@type": "Answer", "text": "STANDARD: The deliverable is the live website link only. The client does not receive the source-code files. PREMIUM: The client receives the website source code and the agreed deployment. Upon full payment, all delivered website content — including text, images, graphics, and custom design — belongs to the client. CodeCrafter's underlying code structure, base templates, and reusable components remain proprietary and may be used across other projects." } }
       ]
